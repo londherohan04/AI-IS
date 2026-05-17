@@ -1,0 +1,44 @@
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+
+def mod_inverse(e, phi):
+    for d in range(1, phi):
+        if (d * e) % phi == 1:
+            return d
+    return None
+
+
+
+p = int(input("Enter prime number p: "))
+q = int(input("Enter prime number q: "))
+
+n = p * q
+
+
+phi = (p - 1) * (q - 1)
+
+e = 2
+while e < phi:
+    if gcd(e, phi) == 1:
+        break
+    e += 1
+
+
+d = mod_inverse(e, phi)
+
+print("\nPublic Key (e, n) =", (e, n))
+print("Private Key (d, n) =", (d, n))
+
+
+msg = int(input("\nEnter message (number): "))
+
+
+cipher = (msg ** e) % n
+print("Encrypted Message =", cipher)
+
+
+plain = (cipher ** d) % n
+print("Decrypted Message =", plain)
