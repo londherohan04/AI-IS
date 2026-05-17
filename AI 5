@@ -1,0 +1,60 @@
+print("===================================")
+print(" Welcome to Customer Support Chatbot ")
+print("===================================")
+
+name = input("Enter your name: ")
+
+print(f"\nHello {name}! How can I help you today?")
+
+while True:
+
+    print("\nChoose an option:")
+    print("1. Product Information")
+    print("2. Order Status")
+    print("3. Payment Issues")
+    print("4. Return Policy")
+    print("5. Exit")
+
+    choice = input("Enter your choice (1-5): ")
+
+
+    if choice == '1':
+
+        product = input("Enter product name: ")
+
+        print(f"\n{product} is available in stock.")
+        print("Price: ₹500")
+        print("Delivery within 3-5 days.")
+
+   
+    elif choice == '2':
+
+        order_id = input("Enter your Order ID: ")
+
+        print(f"\nOrder {order_id} is currently being processed.")
+        print("Expected delivery: 2 days.")
+
+    elif choice == '3':
+
+        print("\nPayment failed?")
+        print("Please check:")
+        print("- Internet connection")
+        print("- Bank balance")
+        print("- Correct card details")
+
+    elif choice == '4':
+
+        print("\nReturn Policy:")
+        print("Products can be returned within 7 days.")
+        print("Refund will be processed within 5 working days.")
+
+  
+    elif choice == '5':
+
+        print(f"\nThank you for using the chatbot, {name}!")
+        print("Have a great day!")
+        break
+
+    else:
+
+        print("\nInvalid choice! Please enter a number from 1 to 5.")
