@@ -1,0 +1,25 @@
+text = input("Enter a string: ")
+
+print("\nOriginal String:", text)
+
+print("\nAND Operation with 127:")
+and_result = ""
+
+for ch in text:
+    result = chr(ord(ch) & 127)
+    and_result += result
+    print(f"{ch} -> {ord(ch)} & 127 = {ord(result)} ({result})")
+
+print("\nResult after AND operation:")
+print(and_result)
+
+print("\nXOR Operation with 127:")
+xor_result = ""
+
+for ch in text:
+    result = chr(ord(ch) ^ 127)
+    xor_result += result
+    print(f"{ch} -> {ord(ch)} ^ 127 = {ord(result)} ({result})")
+
+print("\nResult after XOR operation:")
+print(xor_result)
