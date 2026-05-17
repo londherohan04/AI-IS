@@ -1,0 +1,27 @@
+from Crypto.Cipher import DES
+from Crypto.Util.Padding import pad, unpad
+
+
+message = input("Enter the message: ")
+key = input("Enter 8-character key: ")
+
+
+key = key[:8].ljust(8)
+
+
+key_bytes = key.encode('utf-8')
+message_bytes = message.encode('utf-8')
+
+
+cipher = DES.new(key_bytes, DES.MODE_ECB)
+
+
+encrypted_text = cipher.encrypt(pad(message_bytes, DES.block_size))
+
+print("\nEncrypted Message:", encrypted_text)
+
+
+decipher = DES.new(key_bytes, DES.MODE_ECB)
+decrypted_text = unpad(decipher.decrypt(encrypted_text), DES.block_size)
+
+print("Decrypted Message:", decrypted_text.decode('utf-8'))
