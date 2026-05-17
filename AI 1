@@ -1,0 +1,70 @@
+
+
+from collections import deque
+
+graph = {}
+
+
+def add_edge(u, v):
+    if u not in graph:
+        graph[u] = []
+
+    if v not in graph:
+        graph[v] = []
+
+    graph[u].append(v)
+    graph[v].append(u)
+
+
+
+def dfs(node, visited):
+    visited.add(node)
+    print(node, end=" ")
+
+    for neighbor in graph[node]:
+        if neighbor not in visited:
+            dfs(neighbor, visited)
+
+
+
+def bfs(start):
+    visited = set()
+    queue = deque()
+
+    visited.add(start)
+    queue.append(start)
+
+    while queue:
+        node = queue.popleft()
+        print(node, end=" ")
+
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+
+
+edges = int(input("Enter number of edges: "))
+
+print("Enter edges (vertex1 vertex2):")
+
+for i in range(edges):
+    u, v = input().split()
+    add_edge(u, v)
+
+start_node = input("Enter starting vertex: ")
+
+
+print("\nGraph:")
+for vertex in graph:
+    print(vertex, "->", graph[vertex])
+
+
+print("\nDepth First Search (DFS):")
+visited = set()
+dfs(start_node, visited)
+
+
+print("\n\nBreadth First Search (BFS):")
+bfs(start_node)
