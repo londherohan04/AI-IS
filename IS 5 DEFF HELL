@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diffie-Hellman Key Exchange</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        .container {
+            border: 1px solid black;
+            padding: 20px;
+            width: 450px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Diffie-Hellman Key Exchange</h2>
+
+        <!-- User Inputs -->
+        <label>Enter Prime Number (P):</label><br>
+        <input type="number" id="p"><br>
+
+        <label>Enter Primitive Root (G):</label><br>
+        <input type="number" id="g"><br>
+
+        <label>Enter Alice Private Key:</label><br>
+        <input type="number" id="alicePrivate"><br>
+
+        <label>Enter Bob Private Key:</label><br>
+        <input type="number" id="bobPrivate"><br>
+
+        <button onclick="generateKey()">Generate Shared Key</button>
+
+        <h3>Output</h3>
+
+        <p id="alicePublic"></p>
+        <p id="bobPublic"></p>
+        <p id="aliceSecret"></p>
+        <p id="bobSecret"></p>
+
+    </div>
+
+    <script>
+
+        // Function to calculate power
+        function power(base, exponent, mod) {
+
+            let result = 1;
+
+            for (let i = 0; i < exponent; i++) {
+                result = (result * base) % mod;
+            }
+
+            return result;
+        }
+
+        function generateKey() {
+
+            // Get input from user
+            let p = parseInt(document.getElementById("p").value);
+            let g = parseInt(document.getElementById("g").value);
+            let alicePrivate = parseInt(document.getElementById("alicePrivate").value);
+            let bobPrivate = parseInt(document.getElementById("bobPrivate").value);
+
+            // Generate public keys
+            let alicePublic = power(g, alicePrivate, p);
+            let bobPublic = power(g, bobPrivate, p);
+
+            // Generate shared secret keys
+            let aliceSecret = power(bobPublic, alicePrivate, p);
+            let bobSecret = power(alicePublic, bobPrivate, p);
+
+            // Display output
+            document.getElementById("alicePublic").innerHTML =
+                "Alice Public Key: " + alicePublic;
+
+            document.getElementById("bobPublic").innerHTML =
+                "Bob Public Key: " + bobPublic;
+
+            document.getElementById("aliceSecret").innerHTML =
+                "Alice Shared Secret Key: " + aliceSecret;
+
+            document.getElementById("bobSecret").innerHTML =
+                "Bob Shared Secret Key: " + bobSecret;
+        }
+
+    </script>
+
+</body>
+</html>
