@@ -1,11 +1,10 @@
-
-
 from collections import deque
 
 graph = {}
 
 
 def add_edge(u, v):
+
     if u not in graph:
         graph[u] = []
 
@@ -16,8 +15,8 @@ def add_edge(u, v):
     graph[v].append(u)
 
 
-
 def dfs(node, visited):
+
     visited.add(node)
     print(node, end=" ")
 
@@ -28,6 +27,7 @@ def dfs(node, visited):
 
 
 def bfs(start):
+
     visited = set()
     queue = deque()
 
@@ -35,36 +35,41 @@ def bfs(start):
     queue.append(start)
 
     while queue:
+
         node = queue.popleft()
         print(node, end=" ")
 
         for neighbor in graph[node]:
+
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.append(neighbor)
 
 
 
-edges = int(input("Enter number of edges: "))
 
-print("Enter edges (vertex1 vertex2):")
+try:
+    edges = int(input("Enter number of edges: "))
 
-for i in range(edges):
-    u, v = input().split()
-    add_edge(u, v)
+  
 
-start_node = input("Enter starting vertex: ")
+    for i in range(edges):
 
+        u, v = input(f"Edge {i+1}: ").split()
+        add_edge(u, v)
 
-print("\nGraph:")
-for vertex in graph:
-    print(vertex, "->", graph[vertex])
+    start = input("Enter starting vertex: ")
 
+    print("\nGraph:")
+    for vertex in graph:
+        print(vertex, "->", graph[vertex])
 
-print("\nDepth First Search (DFS):")
-visited = set()
-dfs(start_node, visited)
+    print("\nDFS Traversal:")
+    visited = set()
+    dfs(start, visited)
 
+    print("\n\nBFS Traversal:")
+    bfs(start)
 
-print("\n\nBreadth First Search (BFS):")
-bfs(start_node)
+except ValueError:
+    print("Invalid input! Please enter correct values.")
