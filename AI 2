@@ -1,0 +1,102 @@
+from queue import PriorityQueue
+
+def a_star(graph, start, goal, heuristic):
+
+    pq = PriorityQueue()
+    pq.put((0, start))
+
+    came_from = {}
+    g_cost = {node: float('inf') for node in graph}
+    g_cost[start] = 0
+
+    while not pq.empty():
+
+        current_f_cost, current_node = pq.get()
+
+     
+        if current_node == goal:
+
+            path = []
+
+            while current_node in came_from:
+                path.append(current_node)
+                current_node = came_from[current_node]
+
+            path.append(start)
+            path.reverse()
+
+            return path, g_cost[goal]
+
+     
+        for neighbor, cost in graph[current_node]:
+
+            new_g_cost = g_cost[current_node] + cost
+
+            if new_g_cost < g_cost[neighbor]:
+
+                g_cost[neighbor] = new_g_cost
+
+                f_cost = new_g_cost + heuristic[neighbor]
+
+                pq.put((f_cost, neighbor))
+
+                came_from[neighbor] = current_node
+
+    return None, float('inf')
+
+
+
+
+graph = {}
+heuristic = {}
+
+nodes = int(input("Enter number of nodes: "))
+
+print("\nEnter node names and heuristic values:")
+
+for i in range(nodes):
+
+    node = input("Enter node name: ")
+    h = int(input(f"Enter heuristic value for {node}: "))
+
+    heuristic[node] = h
+    graph[node] = []
+
+
+edges = int(input("\nEnter number of edges: "))
+
+print("\nEnter edges with cost (Example: A B 4)")
+
+for i in range(edges):
+
+    u, v, cost = input(f"Edge {i+1}: ").split()
+
+    cost = int(cost)
+
+   
+    if u not in graph:
+        graph[u] = []
+
+    if v not in graph:
+        graph[v] = []
+
+   
+    graph[u].append((v, cost))
+    graph[v].append((u, cost))
+
+
+start = input("\nEnter start node: ")
+goal = input("Enter goal node: ")
+
+path, cost = a_star(graph, start, goal, heuristic)
+
+
+if path:
+
+    print("\nShortest Path:")
+    print(" -> ".join(path))
+
+    print("Total Cost:", cost)
+
+else:
+    print("No path found")
