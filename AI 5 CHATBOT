@@ -27,27 +27,4 @@ def chatbot():
         else:
             print("Bot: Sorry, I didn't understand that. Can you rephrase?")
             
-chatbot()    elif choice == '3':
-
-        print("\nPayment failed?")
-        print("Please check:")
-        print("- Internet connection")
-        print("- Bank balance")
-        print("- Correct card details")
-
-    elif choice == '4':
-
-        print("\nReturn Policy:")
-        print("Products can be returned within 7 days.")
-        print("Refund will be processed within 5 working days.")
-
-  
-    elif choice == '5':
-
-        print(f"\nThank you for using the chatbot, {name}!")
-        print("Have a great day!")
-        break
-
-    else:
-
-        print("\nInvalid choice! Please enter a number from 1 to 5.")
+chatbot()    
