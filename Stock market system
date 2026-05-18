@@ -1,0 +1,23 @@
+# Expert System for Stock Market Trading
+
+print("===================================")
+print(" STOCK MARKET EXPERT SYSTEM ")
+print("===================================")
+
+price = float(input("Enter current stock price: "))
+trend = input("Enter market trend (up/down): ")
+risk = input("Enter risk level (high/low): ")
+
+print("\n===== STOCK REPORT =====")
+
+if trend == "up" and risk == "low":
+    print("Suggestion: Buy stocks.")
+
+elif trend == "down" and risk == "high":
+    print("Suggestion: Sell stocks.")
+
+elif trend == "up" and risk == "high":
+    print("Suggestion: Invest carefully.")
+
+else:
+    print("Suggestion: Hold current investment.")
