@@ -1,0 +1,23 @@
+# Expert System for Airline Scheduling and Cargo
+
+print("===================================")
+print(" AIRLINE SCHEDULING SYSTEM ")
+print("===================================")
+
+weather = input("Is weather clear? (yes/no): ")
+cargo = int(input("Enter cargo weight in kg: "))
+fuel = input("Is fuel sufficient? (yes/no): ")
+
+print("\n===== AIRLINE REPORT =====")
+
+if weather == "no":
+    print("Flight delayed due to bad weather.")
+
+elif cargo > 5000:
+    print("Cargo exceeds limit. Reduce load.")
+
+elif fuel == "no":
+    print("Refuel aircraft before departure.")
+
+else:
+    print("Flight ready for departure.")
