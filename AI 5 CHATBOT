@@ -1,40 +1,33 @@
-print("===================================")
-print(" Welcome to Customer Support Chatbot ")
-print("===================================")
-
-name = input("Enter your name: ")
-
-print(f"\nHello {name}! How can I help you today?")
-
-while True:
-
-    print("\nChoose an option:")
-    print("1. Product Information")
-    print("2. Order Status")
-    print("3. Payment Issues")
-    print("4. Return Policy")
-    print("5. Exit")
-
-    choice = input("Enter your choice (1-5): ")
-
-
-    if choice == '1':
-
-        product = input("Enter product name: ")
-
-        print(f"\n{product} is available in stock.")
-        print("Price: ₹500")
-        print("Delivery within 3-5 days.")
-
-   
-    elif choice == '2':
-
-        order_id = input("Enter your Order ID: ")
-
-        print(f"\nOrder {order_id} is currently being processed.")
-        print("Expected delivery: 2 days.")
-
-    elif choice == '3':
+def chatbot():
+    print("Bot: Hello! Welcome to our store. How can I help you?")
+    
+    while True:
+        user = input("You: ").lower()
+        
+        if "hello" in user or "hi" in user:
+            print("Bot: Hi there! How can I assist you today?")
+        
+        elif "order" in user and "track" in user:
+            order_id = input("Bot: Please enter your order ID: ")
+            print(f"Bot: Order {order_id} is being processed and will arrive soon.")
+        
+        elif "return" in user:
+            print("Bot: You can return products within 7 days. Please provide your order ID.")
+        
+        elif "refund" in user:
+            print("Bot: Refunds are processed within 5–7 business days.")
+        
+        elif "hours" in user or "open" in user:
+            print("Bot: We are open from 9 AM to 9 PM, Monday to Saturday.")
+        
+        elif "bye" in user:
+            print("Bot: Thank you for visiting! Have a great day!")
+            break
+        
+        else:
+            print("Bot: Sorry, I didn't understand that. Can you rephrase?")
+            
+chatbot()    elif choice == '3':
 
         print("\nPayment failed?")
         print("Please check:")
