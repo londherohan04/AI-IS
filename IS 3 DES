@@ -25,3 +25,8 @@ decipher = DES.new(key_bytes, DES.MODE_ECB)
 decrypted_text = unpad(decipher.decrypt(encrypted_text), DES.block_size)
 
 print("Decrypted Message:", decrypted_text.decode('utf-8'))
+
+
+
+
+pip install pycryptodome
