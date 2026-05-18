@@ -1,0 +1,30 @@
+# Python program to implement AES Algorithm
+
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+
+# User Input
+message = input("Enter the message: ")
+key = input("Enter 16-character key: ")
+
+# AES requires 16-byte key
+key = key[:16].ljust(16)
+
+# Convert to bytes
+key_bytes = key.encode()
+message_bytes = message.encode()
+
+# Create AES Cipher
+cipher = AES.new(key_bytes, AES.MODE_ECB)
+
+# Encryption
+encrypted_text = cipher.encrypt(pad(message_bytes, AES.block_size))
+
+print("\nEncrypted Message:", encrypted_text)
+
+# Decryption
+decrypted_text = unpad(cipher.decrypt(encrypted_text), AES.block_size)
+
+print("Decrypted Message:", decrypted_text.decode())
+
+pip install pycryptodome
