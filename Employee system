@@ -1,0 +1,23 @@
+# Expert System for Employee Performance Evaluation
+
+print("===================================")
+print(" EMPLOYEE PERFORMANCE SYSTEM ")
+print("===================================")
+
+attendance = int(input("Enter attendance percentage: "))
+projects = int(input("Enter number of completed projects: "))
+punctual = input("Is employee punctual? (yes/no): ")
+
+print("\n===== PERFORMANCE REPORT =====")
+
+if attendance >= 90 and projects >= 5 and punctual == "yes":
+    print("Performance: Excellent")
+
+elif attendance >= 75 and projects >= 3:
+    print("Performance: Good")
+
+elif attendance >= 60:
+    print("Performance: Average")
+
+else:
+    print("Performance: Poor")
