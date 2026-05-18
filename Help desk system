@@ -1,0 +1,23 @@
+# Expert System for Help Desk Management
+
+print("===================================")
+print(" HELP DESK MANAGEMENT SYSTEM ")
+print("===================================")
+
+internet = input("Is internet working? (yes/no): ")
+computer = input("Is computer turning on? (yes/no): ")
+slow = input("Is system slow? (yes/no): ")
+
+print("\n===== HELP DESK REPORT =====")
+
+if internet == "no":
+    print("Check Wi-Fi or network cable connection.")
+
+elif computer == "no":
+    print("Check power supply and restart computer.")
+
+elif slow == "yes":
+    print("Clean temporary files and scan for viruses.")
+
+else:
+    print("System is working properly.")
