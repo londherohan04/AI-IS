@@ -1,0 +1,25 @@
+# Expert System for Information Management
+
+print("===================================")
+print(" INFORMATION MANAGEMENT SYSTEM ")
+print("===================================")
+
+storage = int(input("Enter available storage in GB: "))
+backup = input("Do you have backup? (yes/no): ")
+files = int(input("Enter number of files: "))
+
+print("\n===== SYSTEM REPORT =====")
+
+if storage < 10:
+    print("Low storage space detected.")
+    print("Advice: Delete unnecessary files.")
+
+elif files > 1000 and backup == "no":
+    print("Large amount of files without backup.")
+    print("Advice: Create backup immediately.")
+
+elif storage > 50 and backup == "yes":
+    print("System is properly managed.")
+
+else:
+    print("Moderate information management condition.")
